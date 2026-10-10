@@ -1,8 +1,8 @@
 import requests
 from pokemon import Pokemon
 
-def get_pokemon(pokemon):
-    url = f"https://pokeapi.co/api/v2/pokemon/{pokemon}/"
+def get_pokemon(name_pokemon):
+    url = f"https://pokeapi.co/api/v2/pokemon/{name_pokemon}/"
     
     response = requests.get(url)
     
@@ -17,7 +17,6 @@ def get_pokemon(pokemon):
     stats = {}
 
     for stat in pokemon["stats"]:
-        # stats(stat["stat"]["name"], stat["base_stat"])
         stats[stat["stat"]["name"]] = stat["base_stat"]
         
 
@@ -30,6 +29,7 @@ def get_pokemon(pokemon):
     return Pokemon(
         name=pokemon["name"],
         types=types,
-        moves=moves,
         stats=stats,
+        moves=moves
     )
+    
