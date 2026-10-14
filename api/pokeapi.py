@@ -1,5 +1,63 @@
 import requests
-from pokemon import Pokemon
+import random
+
+from models import Pokemon
+
+
+rarities_pokemons = {
+    "comum": [
+        "rattata",
+        "pidgey",
+        "caterpie",
+        "weedle",
+        "zubat",
+        "geodude",
+        "magikarp"
+    ],
+
+    "incomum": [
+        "pikachu",
+        "growlithe",
+        "machop",
+        "gastly",
+        "abra",
+        "eevee"
+    ],
+
+    "raro": [
+        "charizard",
+        "lapras",
+        "snorlax",
+        "dragonair",
+        "scyther",
+        "gyarados"
+    ],
+
+    "epico": [
+        "dragonite",
+        "tyranitar",
+        "metagross",
+        "garchomp",
+        "salamence"
+    ],
+
+    "lendario": [
+        "mewtwo",
+        "articuno",
+        "zapdos",
+        "moltres",
+        "lugia",
+        "rayquaza"
+    ],
+
+    "mitico": [
+        "mew",
+        "celebi",
+        "jirachi",
+        "deoxys"
+    ]
+}
+
 
 def get_pokemon(name_pokemon):
     url = f"https://pokeapi.co/api/v2/pokemon/{name_pokemon}/"
@@ -32,4 +90,26 @@ def get_pokemon(name_pokemon):
         stats=stats,
         moves=moves
     )
+
+
+def get_random_pokemon():
+    rarities = [
+        "comum",
+        "incomum",
+        "raro",
+        "epico",
+        "lendario",
+        "mitico"
+    ]
+
+    rarity = random.choices(
+        rarities,
+        weights=[60, 20, 10, 7, 1, 0.5],
+        k=1
+    )[0]
+
+    pokemon = random.choice(rarities_pokemons[rarity])
     
+    pokemon_api = get_pokemon(name_pokemon=pokemon)
+    
+    return pokemon_api, rarity
