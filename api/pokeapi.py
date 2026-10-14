@@ -1,7 +1,7 @@
 import requests
 import random
 
-from models import Pokemon
+from models import Pokemon, Player
 
 
 rarities_pokemons = {
@@ -104,12 +104,11 @@ def get_random_pokemon():
 
     rarity = random.choices(
         rarities,
-        weights=[60, 20, 10, 7, 1, 0.5],
+        weights=[60, 20, 10, 7, 2.5, 0.5],
         k=1
     )[0]
 
     pokemon = random.choice(rarities_pokemons[rarity])
     
     pokemon_api = get_pokemon(name_pokemon=pokemon)
-    
     return pokemon_api, rarity

@@ -1,4 +1,4 @@
-class Jogador:
+class Player:
     def __init__(self, name, pokecoin, pokemons):
         self.name = name
         self.pokecoin = pokecoin
