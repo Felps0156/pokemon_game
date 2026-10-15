@@ -1,6 +1,7 @@
-import time
-
 from api.pokeapi import get_random_pokemon
+from game.pc import open_pc
+from game.menu import open_menu
+
 from screen import clean_screen, return_screen
 from models import Player
 
@@ -12,6 +13,7 @@ player = Player(
     pokecoin=1,
     pokemons=[]
 )
+
 while True: 
     clean_screen()
     
@@ -25,31 +27,7 @@ while True:
     choice = input("> ")
     
     if choice == "1":
-        clean_screen()
-        if player.pokecoin >= 1:
-            player.pokecoin -= 1
-            
-            pokemon, rarity = get_random_pokemon()
-            player.pokemons.append(pokemon.name)
-
-            print(f"Você sorteou {pokemon.name}")
-            print(f"Raridade: {rarity}")
-
-            print(f"Quantidade de moedas: {player.pokecoin}")
-            
-            return_screen()
-        else:
-            print("Você não possui mais Moedas")
-            return_screen()
+        open_menu(player)
         
     if choice == "2":
-        clean_screen()
-        
-        print("-" * 15)
-        print("  INVENTARIO")
-        print("-" * 15)
-        
-        for pokemon in player.pokemons:
-            print(pokemon)
-            
-        return_screen()
+        open_pc(player)
