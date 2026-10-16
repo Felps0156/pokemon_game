@@ -2,7 +2,7 @@ from api.pokeapi import get_random_pokemon
 from screen import clean_screen, return_screen
 
 
-def open_menu(player):
+def open_random_pokemon(player):
     clean_screen()
     if player.pokecoin >= 1:
         player.pokecoin -= 1

@@ -1,6 +1,6 @@
 from api.pokeapi import get_random_pokemon
 from game.pc import open_pc
-from game.menu import open_menu
+from game.random_pokemon import open_random_pokemon
 
 from screen import clean_screen, return_screen
 from models import Player
@@ -27,7 +27,7 @@ while True:
     choice = input("> ")
     
     if choice == "1":
-        open_menu(player)
+        open_random_pokemon(player)
         
     if choice == "2":
         open_pc(player)
