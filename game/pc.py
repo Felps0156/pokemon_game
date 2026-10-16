@@ -6,8 +6,16 @@ def open_pc(player):
     print("-" * 15)
     print("  INVENTARIO")
     print("-" * 15)
-            
-    for pokemon in player.pokemons:
-        print(pokemon)
 
-    return_screen()
+    number_pokemon = 0
+
+    print("[0] Voltar")
+
+    for pokemon in player.pokemons:
+        number_pokemon = number_pokemon + 1
+
+        print(f"[{number_pokemon}] {pokemon}")
+
+    
+
+    

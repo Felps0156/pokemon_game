@@ -10,7 +10,7 @@ from models import Player
 
 player = Player(
     name="Felipe",
-    pokecoin=1,
+    pokecoin=15,
     pokemons=[]
 )
 
